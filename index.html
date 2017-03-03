@@ -4,13 +4,24 @@
 </head>
 <body>
   <div class='theorems_collection'>
-    <h2>Main theorems</h2>
+    <h2>Main theorems and definitions</h2>
     <ul>
       <li>
-        closed loops only get from 1/z
+        $&z=x+iy=re^{i\theta}&$
       </li>
       <li>
-        derivative method for getting a-1
+        closed loops only get contributions from 1/z
+        $&
+        \oint z^n dz =
+        \oint z^n re^{i\theta} d\theta =
+        i\oint r^{n+1}e^{i(n+1)\theta} d\theta
+        &$ will give 0 for all integers beside -1 as it will be a constant term, $&2\pi&$
+      </li>
+      <li>
+        Laurent series $&f(z)=\Sigma_{-\infty}^{\infty}=a_n(z-z_0)^{n}&$, $&a_{-1}&$ is referred to as the residue at $&z_0&$ and exists for functions with singularities. I will refer to residues in the future as $&\gamma_{z_0}&$
+      </li>
+      <li>
+        derivative method for getting $&a_{-1}&$
       </li>
       <li>
         mittag leffler theorem
@@ -19,6 +30,14 @@
         jordan's lemma
       </li>
     </ul>
+  </div>
+  <div class='integral_collection'>
+    <h2>Integral beastiary</h2>
+    <ol>
+      <li>
+        $&\int_{-\infty}^{\infty}f(x)dx&$ hooah
+      </li>
+    </ol>
   </div>
 </body>
 <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
@@ -30,5 +49,9 @@
     console.log('mathjax loaded')
   }
 </script>
-
+<style type="text/css">
+  li {
+    font-size: 1.5em;
+  }
+</style>
 </html>
