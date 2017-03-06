@@ -5,6 +5,7 @@
 <body>
   <div class='theorems_collection'>
     <h2>Main theorems and definitions</h2>
+    <p>equation references are to Mathematical Methods for Physicists by Arfken, 7th edition</p>
     <ul>
       <li>
         $&z=x+iy=re^{i\theta}&$
@@ -15,16 +16,36 @@
         \oint z^n dz =
         \oint z^n re^{i\theta} d\theta =
         i\oint r^{n+1}e^{i(n+1)\theta} d\theta
-        &$ will give 0 for all integers beside -1 as it will be a constant term, $&2\pi&$
+        &$ will give 0 for all integers beside -1 as it will be a constant term, $&i2\pi&$ eq11.20
       </li>
       <li>
-        Laurent series $&f(z)=\Sigma_{-\infty}^{\infty}=a_n(z-z_0)^{n}&$, $&a_{-1}&$ is referred to as the residue at $&z_0&$ and exists for functions with singularities. I will refer to residues in the future as $&\gamma_{z_0}&$
+        Laurent series $&f(z)=\Sigma_{-\infty}^{\infty}=a_n(z-z_0)^{n}&$, $&a_n=\frac{1}{i2\pi}\oint\frac{f}{(z-z_0)^{n+1}}dz&$
+        $&a_{-1}&$ is referred to as the residue at $&z_0&$ and exists for functions with singularities. I will refer to residues in the future as $&\gamma_{z_0}&$
+      </li>
+      <li>
+        because of laurent series expansions any closed loop will have a 2nd form to describe their value $&\oint f(z) dz = i2\pi(\Sigma_i \gamma_{z_i})&$
+      </li>
+      <li>
+        Cauchy's Integral Formula
+        $&\oint \frac{f(z)}{z-z_0}=i2\pi f(z_0)&$ if $&z_0&$ is inside the contour. This extends to derivatives as well
+        $&f^{(n)}(z_0)=\frac{n!}{i2\pi}\oint\frac{f}{(z-z_0)^{n+1}}dz&$
       </li>
       <li>
         derivative method for getting $&a_{-1}&$
+        $&\gamma_i=\frac{1}{(n-1)!}[(\frac{d}{dz})^{n-1}(f(z)(z-z_i)^n)]|_{z_i}&$ where n is the order pole you have. eq11.68
       </li>
       <li>
         mittag leffler theorem
+        $&f(z)=
+        f(0)+\Sigma_i\gamma_i(\frac{1}{z-z_i}+\frac{1}{z_i})=
+        f(0)+\Sigma_i(\frac{\gamma_i z}{z_i(z-z_i)})
+        &$ eq11.79
+      </li>
+      <li>
+        eq11.88 $&f(z)=f(0)e^{\frac{zf'}{f}|_0}\Pi_i(1-\frac{z}{z_i})e^{z/z_i}&$
+      </li>
+      <li>
+        eq11.85 given a function f with some number of poles P and some number of zeros N in a region, $&\oint \frac{f'}{f}dz=i2\pi(N-P)&$ multi ordered poles and zeros counted as their order. $&f=z^2(z-1)^{-3}&$ for example has N=2 and P=3, but if a contour had radius a half and centered at the origin, then only the zeros would count.
       </li>
       <li>
         jordan's lemma
@@ -35,7 +56,28 @@
     <h2>Integral beastiary</h2>
     <ol>
       <li>
-        $&\int_{-\infty}^{\infty}f(x)dx&$ hooah
+        case 1 $&\int_{-\infty}^{\infty}f(x)dx&$ such that the magnitude of f decays faster than linearly at infinite and has finite number of poles. an example would be $&f= \frac{1}{(x^2+1)(x-i2)}&$ in this case there are 3 poles, 2 above the real axis. A contour at infinity would go to zero meaning
+        $&\int_{-\infty}^{\infty}f(x)dx=i2\pi(\gamma_i+\gamma_{i2})&$
+      </li>
+      <li>
+        case 2 $&\int_{0}^{\infty}f(x)dx=2\int_{-\infty}^{\infty}f(x)dx&$ if f is symmetric and possess the same properties in case 1.
+      </li>
+      <li>
+        case 3 $&\int_{0}^{2\pi}f(cos(\theta), sin(\theta))d\theta&$ making the substitution $&z^{i\theta}&$ allows you to turn this into closed loop integral around the unit circle and often give the original f some kind of polynomial structure. After finding the residues inside it proceeds like normal.
+      </li>
+      <li>
+        case 4 (jordan's lemma) $&\int_{-\infty}^{\infty}f(x)e^{iax}dx&$ for the exponential to be handled you need to integrate over the half of the complex plane such that $&iaz&$ has a negative real value. If that is done, then you return to case 1 with relaxed constraints of f having to go zero at any rate, not super linearly.
+      </li>
+      <li>
+        case 5 (principal value integral) $&\int_{-\infty}^{\infty}f(x)dx&$ if f has singularities on the axis of integration that are anti-symmetric but otherwise satisfies the criterion of case 1, you can proceed as normal, counting the on-axis singularities as half.
+      </li>
+      <li>
+        case 6 (slice integral) $&\int_{0}^{\infty}f(x)dx&$ f is not symmetric around 0 like in case 2, but has the property that it can be rotated in the complex plane such that
+        $&\int_{0}^{\infty}f(x)^\dagger dx^\dagger=\lambda\int_{0}^{\infty}f(x)dx&$
+        <br>
+        example being $&\int_{0}^{\infty}\frac{1}{x^3+1}dx&$ if rotated through
+        $&\theta = 2\pi/3&$ produces the integral
+        $&e^{2\pi/3}\int_{0}^{\infty}\frac{1}{x^3+1}dx&$ Use these as legs to a form a contour with infinity and assess residues.
       </li>
     </ol>
   </div>
